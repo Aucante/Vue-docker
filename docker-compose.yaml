@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  vue:
+    build:
+      target: development
+    volumes:
+    - ./../vuejs:/project
+    - /project/node_modules
+    ports:
+    - "8080:8080"
