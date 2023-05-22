@@ -18,7 +18,7 @@
       </select>
       Mise en forme <input type="checkbox" v-model="mef" />
     </fieldset>
-    <div v-for="p in personnes" :key="p.id">
+    <div v-for="p in personnes" :key="p.id" :class="{ misEnForme: mef }">
       <div
         v-if="
           (homme && p.name.title == 'Mr') || (femme && p.name.title == 'Mrs')
