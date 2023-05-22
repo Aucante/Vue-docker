@@ -18,6 +18,12 @@
       </select>
       Mise en forme <input type="checkbox" v-model="mef" />
     </fieldset>
+    <div v-for="p in personnes" :key="p.id">
+      <img :src="p.picture.medium" /><br />
+      {{ p.name.title }} {{ p.name.first }} {{ p.name.last }}<br />
+      {{ p.phone }}<br />
+      {{ p.location.country }}
+    </div>
   </div>
 </template>
 
@@ -213,4 +219,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+img {
+  float: left;
+  margin-right: 1rem;
+}
 </style>
