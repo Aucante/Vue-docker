@@ -19,10 +19,17 @@
       Mise en forme <input type="checkbox" v-model="mef" />
     </fieldset>
     <div v-for="p in personnes" :key="p.id">
-      <img :src="p.picture.medium" /><br />
-      {{ p.name.title }} {{ p.name.first }} {{ p.name.last }}<br />
-      {{ p.phone }}<br />
-      {{ p.location.country }}
+      <div
+        v-if="
+          (homme && p.name.title == 'Mr') || (femme && p.name.title == 'Mrs')
+        "
+      >
+        <img :src="p.picture.medium" /><br />
+        {{ p.name.title }} {{ p.name.first }} {{ p.name.last }}<br />
+        <div v-if="telephone">{{ p.phone }}</div>
+        <br />
+        {{ p.location.country }}
+      </div>
     </div>
   </div>
 </template>
