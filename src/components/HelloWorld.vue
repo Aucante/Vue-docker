@@ -13,7 +13,7 @@
       Photo
       <select v-model="taille">
         <option value="1">Petit</option>
-        <option value="2">Moyen</option>
+        <option value="2" selected>Moyen</option>
         <option value="3">Large</option>
       </select>
       Mise en forme <input type="checkbox" v-model="mef" />
@@ -24,7 +24,9 @@
           (homme && p.name.title == 'Mr') || (femme && p.name.title == 'Mrs')
         "
       >
-        <img :src="p.picture.medium" /><br />
+        <img v-if="taille == 1" :src="p.picture.thumbnail" />
+        <img v-else-if="taille == 2" :src="p.picture.medium" />
+        <img v-else :src="p.picture.large" />
         {{ p.name.title }} {{ p.name.first }} {{ p.name.last }}<br />
         <div v-if="telephone">{{ p.phone }}</div>
         <br />
@@ -42,6 +44,7 @@ export default {
       femme: true,
       telephone: true,
       mef: false,
+      taille: 2,
       personnes: [
         {
           gender: "female",
@@ -229,5 +232,11 @@ export default {
 img {
   float: left;
   margin-right: 1rem;
+}
+.misEnForme {
+  background: #e0ffff;
+  font-family: georgia;
+  font-size: 1.2rem;
+  margin: 1rem;
 }
 </style>
