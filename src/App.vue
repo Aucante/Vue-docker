@@ -9,6 +9,11 @@
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
+  data() {
+    return {
+      nombre: Math.floor(Math.random() * 100 + 1),
+    };
+  },
   name: "App",
   components: {
     HelloWorld,
