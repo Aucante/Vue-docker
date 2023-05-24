@@ -1,38 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <fieldset>
-      <legend>Filtre sur le nom</legend>
-      <input type="text" name="" id="" v-model="filtreNom" />
-    </fieldset>
-    <fieldset>
-      <legend>Options</legend>
-      Homme <input type="checkbox" checked v-model="homme" /> Femme
-      <input type="checkbox" checked v-model="femme" /> Telephone
-      <input type="checkbox" checked v-model="telephone" />
-      Photo
-      <select v-model="taille">
-        <option value="1">Petit</option>
-        <option value="2" selected>Moyen</option>
-        <option value="3">Large</option>
-      </select>
-      Mise en forme <input type="checkbox" v-model="mef" />
-    </fieldset>
-    <div v-for="p in personnes" :key="p.id" :class="{ misEnForme: mef }">
-      <div
-        v-if="
-          (homme && p.name.title == 'Mr') || (femme && p.name.title == 'Mrs')
-        "
-      >
-        <img v-if="taille == 1" :src="p.picture.thumbnail" />
-        <img v-else-if="taille == 2" :src="p.picture.medium" />
-        <img v-else :src="p.picture.large" />
-        {{ p.name.title }} {{ p.name.first }} {{ p.name.last }}<br />
-        <div v-if="telephone">{{ p.phone }}</div>
-        <br />
-        {{ p.location.country }}
-      </div>
-    </div>
   </div>
 </template>
 
