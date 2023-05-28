@@ -1,28 +1,28 @@
 <template>
   <div class="hello">
     <h1>{{ message }}</h1>
+    <button @click="fetchData">Fetch Data</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "HelloWorld",
   props: {
     message: String,
   },
+  methods: {
+    fetchData() {
+      axios.get("https://randomuser.me/api/?results=3").then((response) => {
+        console.log(response.data);
+      });
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-img {
-  float: left;
-  margin-right: 1rem;
-}
-.misEnForme {
-  background: #e0ffff;
-  font-family: georgia;
-  font-size: 1.2rem;
-  margin: 1rem;
-}
+/* Votre style personnalisé ici */
 </style>
