@@ -3,20 +3,26 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld message="Composant HelloWorld" :users="users" />
     <HelloWorld message="Composant All Users" :users="users" />
-    <button @click="fetchData">Fetch Data</button>
+    <button @click="compteur++">Click</button>
+    {{ compteur }}
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import axios from "axios";
 
 export default {
   data() {
     return {
-      nombre: Math.floor(Math.random() * 100 + 1),
-      usersData: [],
+      compteur: 0,
     };
+  },
+  watch: {
+    compteur(valeur) {
+      if (valeur == 10) {
+        this.compteur = 0;
+      }
+    },
   },
   name: "App",
   components: {
@@ -25,19 +31,8 @@ export default {
   props: {
     message: String,
   },
-  methods: {
-    fetchData() {
-      axios.get("https://randomuser.me/api/?results=10").then((response) => {
-        console.log(response.data.results);
-        this.usersData = response.data.results;
-      });
-    },
-  },
-  computed: {
-    users() {
-      return this.usersData; // Utilisation de la copie locale des données pour la prop 'users'
-    },
-  },
+  methods: {},
+  computed: {},
 };
 </script>
 
