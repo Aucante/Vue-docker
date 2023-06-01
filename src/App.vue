@@ -19,7 +19,7 @@ export default {
   },
   watch: {
     compteur(valeur) {
-      if (valeur == 10) {
+      if (valeur == 5) {
         this.compteur = 0;
       }
     },
